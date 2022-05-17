@@ -1,0 +1,39 @@
+{"backend_state":"init","connection_file":"/tmp/xdg-runtime-user/jupyter/kernel-cd2cf7fe-5182-4e7f-b26e-cbb86608495f.json","kernel":"python3","kernel_error":"","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":0},"metadata":{"language_info":{"codemirror_mode":{"name":"ipython","version":3},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython3","version":"3.8.5"}},"trust":true,"type":"settings"}
+{"cell_type":"code","exec_count":0,"id":"08dd74","input":"","pos":28,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"109cf6","input":"np.random.randn() # an observation from a standard normal random variable","pos":21,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"1180eb","input":"print(np.matmul(w, A))","pos":2,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"453ab4","input":"A = np.array([[2, 2, 1],[2, 2, 2],[1, 2, 2]])\nnp.linalg.det(A)","pos":8,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"4d9b88","input":"","pos":29,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"5c35e3","input":"np.linalg.inv(A)","pos":10,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"5e70bb","input":"def fib(n):\n    # your code here","pos":35,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"6cf7c4","input":"np.linalg.matrix_power(A, -1)","pos":12,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"96d458","input":"","pos":26,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"976ee1","input":"np.random.choice(np.array([2, 4, 6, 8, 10])) # random element from a 1D array","pos":22,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"a2f0a9","input":"A = np.array([[1, 1], [0, 1]])\nprint(A ** 5)\nprint()\nprint(np.linalg.matrix_power(A, 5))","pos":4,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"a8c08f","input":"print(np.eye(4))      # 4x4 identity matrix\nnp.zeros((3, 2))      # 3x2 zero matrix. Notice the two pairs of ()s","pos":14,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"b00e85","input":"np.random.rand(2, 2) # 2x2 array of uniformly distributed random numbers between 0 and 1","pos":24,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"b0e4eb","input":"A = np.array([[1, 1], [1, 1]])\ne = np.linalg.eig(A)\nprint(e[0]) # a 1-dimensional array containing eigenvalues\nprint(e[1]) # a 2-dimensional array whose columns are eigenvectors","pos":17,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"b6db33","input":"A = np.array([[1, 2, 3], [4, 5, 6]])\nI2 = np.eye(2)\nI3 = np.eye(3)\nprint(np.array_equal(I2 @ A, A), np.array_equal(A @ I3, A))","pos":15,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"baa7cc","input":"A = np.array([[1, 2], [2, 3]])\nA ** 10 # 2^10 is 1024, 3^10 is 59049","pos":6,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"bdca9c","input":"","pos":33,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"d938a3","input":"import numpy as np\n\nA = np.array([[1, 2, 3],[4, 5, 6],[7, 8, 9]]) # 3x3 matrix\nw = np.array([[1], [-1], [1]]) # 3x1 column vector\nv = np.array([[1, -1, 1]]) # 1x3 row vector\nprint(np.matmul(A, w), \" is Aw.\\n\")\nprint(A @ w, \" is another way to compute Aw.\\n\")\nprint(\"vA is\", v @ A)","pos":1,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"da84ab","input":"np.random.rand() # uniform random number between 0 and 1","pos":23,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"dd6e72","input":"","pos":31,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"e93067","input":"np.random.randint(1, 5) # a random integer x with 1 <= x < 5","pos":20,"type":"cell"}
+{"cell_type":"markdown","id":"06cf3c","input":"**Compute $\\mathbf{y}B$ and $B\\mathbf{x}$ using `np.matmul` or `@`.**","pos":27,"type":"cell"}
+{"cell_type":"markdown","id":"17183c","input":"Now **write a function `fib(n)` which computes the `n`th Fibonacci number** by\n - computing $F^n$, then\n - finding $F^n \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$, then finally\n - returning the entry in position 1, 0","pos":34,"type":"cell"}
+{"cell_type":"markdown","id":"181291","input":"or alternatively by using `np.linalg.matrix_power`","pos":11,"type":"cell"}
+{"cell_type":"markdown","id":"1db198","input":"... and the inverse of an invertible square matrix with `np.linalg.inv`:","pos":9,"type":"cell"}
+{"cell_type":"markdown","id":"1fdf4a","input":"What is happening here is that `A ** n` just takes the nth power of each element of `A`. For example:","pos":5,"type":"cell"}
+{"cell_type":"markdown","id":"4c5792","input":"### Exercise 2: Fibonacci numbers using matrix powers\n\nThe Fibonacci numbers $f_n$ are defined by $f_0=0, f_1=1$, and $f_n = f_{n-1}+f_{n-2}$ for $n \\geq 2$.  Therefore for any $n$,\n\n$$ \\begin{pmatrix} 1&1\\\\1&0\\end{pmatrix} \\begin{pmatrix}f_{n-1} \\\\ f_{n-2} \\end{pmatrix} = \\begin{pmatrix}f_{n} \\\\ f_{n-1}\\end{pmatrix}$$\n\nIt follows that if $F = \\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}$ then\n\n$$ F^n \\begin{pmatrix} 1 \\\\ 0\\end{pmatrix} = \\begin{pmatrix}f_{n+1}\\\\f_n\\end{pmatrix}$$\n\nso that the $n$th Fibonacci number $f_n$ is the row 1, column 0 entry of $F^n \\begin{pmatrix}1\\\\0\\end{pmatrix}$.\n\n**Create $F$ and $\\begin{pmatrix}1 \\\\ 0\\end{pmatrix}$ as NumPy arrays of shapes `(2,2)` and `(2,1)`:**","pos":30,"type":"cell"}
+{"cell_type":"markdown","id":"7cca05","input":"## NumPy randomisation functions\n\nNumPy has some functions similar to those in the `random` module we met last week.  The basic functions are similar to the `random` module which you worked with last week, so we won't spend much time on it.","pos":19,"type":"cell"}
+{"cell_type":"markdown","id":"86f435","input":"NumPy will calculate eigenvectors and eigenvalues with [`np.linalg.eig`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.eig.html):","pos":16,"type":"cell"}
+{"cell_type":"markdown","id":"87691d","input":"# Week 4 part 2 - numpy 2\n\n## Matrix multiplication\n\nWhen two arrays have appropriate shapes we can matrix multiply them with `np.matmul` or with the `@` symbol (not `*` which does something else).  Why must the second code cell below cause an error?","pos":0,"type":"cell"}
+{"cell_type":"markdown","id":"9b6461","input":"## Unassessed exercises\n\n### Exercise 1 - practise matrix multiplication\n\nCopy your code that created the vectors $\\mathbf{x}, \\mathbf{y}$, and the matrix $B$ from exercise 1 of the last notebook into the next cell.","pos":25,"type":"cell"}
+{"cell_type":"markdown","id":"b7249d","input":"## NumPy linear algebra\n\nYou can calculate the determinant of a square matrix with `np.linalg.det`:","pos":7,"type":"cell"}
+{"cell_type":"markdown","id":"bf90b5","input":"You can also make an $n\\times n$ identity matrix with `np.eye(n)` and a $m\\times n$ zero matrix with `np.zeros((m, n))` (**not** `np.zeros(m,n)`!)","pos":13,"type":"cell"}
+{"cell_type":"markdown","id":"c0b638","input":"If `A` is a square array, you must use `np.linalg.matrix_power(A, n)` to compute $A^n$. You can't use `A ** n`.\n\nIn the following example, $A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1\\end{pmatrix}$, so that $A^n = \\begin{pmatrix} 1 & n \\\\ 0 & 1\\end{pmatrix}$.","pos":3,"type":"cell"}
+{"cell_type":"markdown","id":"c26820","input":"**Compute the 10th Fibonacci number by finding $F^{10}$ using `np.linalg.matrix_power` then using `@` to work out $F^{10} \\begin{pmatrix}1\\\\0\\end{pmatrix}$.**","pos":32,"type":"cell"}
+{"cell_type":"markdown","id":"e1981b","input":"The eigenvectors are scaled so that they have length 1, hence the `0.707...` that you see in the output of the previous cell.","pos":18,"type":"cell"}
+{"id":0,"time":1614969961600,"type":"user"}
+{"last_load":1614704051111,"type":"file"}

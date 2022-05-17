@@ -1,0 +1,22 @@
+{"backend_state":"init","kernel":"python3","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":0},"metadata":{"language_info":{"codemirror_mode":{"name":"ipython","version":3},"file_extension":".py","mimetype":"text/x-python","name":"python","nbconvert_exporter":"python","pygments_lexer":"ipython3","version":"3.8.5"}},"trust":false,"type":"settings"}
+{"cell_type":"code","exec_count":0,"id":"002241","input":"a == 2","pos":12,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"1440d0","input":"the number of MATH0011 students = 460","pos":18,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"18b55f","input":"phi ** 2 - phi - 1","pos":3,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"243064","input":"y = a + 1","pos":6,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"54d354","input":"a = a + 1","pos":8,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"76e70b","input":"0 == 1","pos":13,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"824b5d","input":"phi + a","pos":4,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"82a3a2","input":"1/2 == 0.5","pos":14,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"9721a5","input":"pi = 3.141592654\nradius = 4\narea_of_circle = pi * radius ** 2\narea_of_circle","pos":16,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"d16d22","input":"a","pos":10,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"f7faf4","input":"phi = (1 + 5 ** 0.5) / 2\na = 1","pos":1,"type":"cell"}
+{"cell_type":"markdown","id":"0b7a2f","input":"(If you get a `NameError` saying that `'a' is not defined` when you run the cell above, it's because you haven't run cell 2 above where `a` was defined.)\n\nYou can even do this:","pos":7,"type":"cell"}
+{"cell_type":"markdown","id":"36795a","input":"Spaces aren't allowed in variable names. The next cell will cause an error:","pos":17,"type":"cell"}
+{"cell_type":"markdown","id":"a1f8c0","input":"`phi` and `a` (and anything else you define in this way) are called **variables**.  You can define variables in terms of other variables:","pos":5,"type":"cell"}
+{"cell_type":"markdown","id":"bd3f12","input":"As an equation, this wouldn't make any sense: there aren't any numbers $a$ such that $a=a+1$.  A single equals sign `=` in Python means *assignment* not equality.  \n`y = x + 1` means \"assign the variable `y` the value of `x` plus one\", and `a = a + 1` means \"assign the variable `a` its old value plus one.\"\n\nWhat will the value of `a` be after you hvae run the code cell containing `a = a + 1` above?  Run the next cell to see if you were right.","pos":9,"type":"cell"}
+{"cell_type":"markdown","id":"cf5ee8","input":"### Variables\n\nThis is part 2 of the week 1 notebook. Remember that to run a code cell you must click in the cell and press shift and enter.\n\nIn maths we often say things like \"let $\\phi = \\frac{1+\\sqrt{5}}{2}$\" because it saves us writing out complicated expressions lots of times.  You can do exactly the same thing in Python.  Use shift-enter to run the next cell:","pos":0,"type":"cell"}
+{"cell_type":"markdown","id":"d97f61","input":"### Checking for equality\n\nSince `=` is used for variable assignment in Python, we must use a different symbol for checking if two things are equal. To check if two things are equal in Python you must use two equals signs, like this `==`.  The answer will be `True` or `False` - these are *booleans* which you will learn about in a later notebook this week.","pos":11,"type":"cell"}
+{"cell_type":"markdown","id":"e449ae","input":"Now you can use `phi` and `a` in calculations:","pos":2,"type":"cell"}
+{"cell_type":"markdown","id":"f5d725","input":"### Variable name rules\n\nVariables can have names with more than one character.  The rules for variable names are simple:\n\n- you can only use letters, numbers, and underscores `_`,\n- you can't use certain special \"keywords\" that Python needs for other purposes,\n- variable names can't start with a number.\n\nLonger names can be helpful because you can give variables descriptive names that make the code you write easier to understand.","pos":15,"type":"cell"}
+{"id":0,"time":1611420508251,"type":"user"}
+{"last_load":1611420508403,"type":"file"}

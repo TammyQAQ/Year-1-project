@@ -1,0 +1,455 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "# For loops\n",
+    "\n",
+    "Consider an expression like\n",
+    "\n",
+    "$$ \\sum_{i=0}^5 (2i+1).$$\n",
+    "\n",
+    "If you were going to evaluate this by hand you do it by adding the terms one-by-one, keeping a running total.  In other words you'd start with a running total of 0, then add on $2\\times 0 + 1$ to get 1, then add on $2\\times 1 + 1$ to get 4, and so on.\n",
+    "\n",
+    "You could do the same thing in Python with the following code:\n",
+    "```\n",
+    "running_total = 0\n",
+    "running_total = running_total + 2 * 0 + 1\n",
+    "running_total = running_total + 2 * 1 + 1\n",
+    "running_total = running_total + 2 * 2 + 1\n",
+    "running_total = running_total + 2 * 3 + 1\n",
+    "running_total = running_total + 2 * 4 + 1\n",
+    "running_total = running_total + 2 * 5 + 1\n",
+    "```\n",
+    "\n",
+    "...after which `running_total` will hold the answer we want, which is 36.  But typing out all those lines isn't a good use of your time, especially if you wanted the sum from $i=0$ to $50$ or $500000$ instead.  There should be a more efficient way.\n",
+    "\n",
+    "What we want to do is to run the code\n",
+    "```\n",
+    "running_total = running_total + 2 * i + 1\n",
+    "```\n",
+    "several times, substituting a different value for the **index variable** $i$ each time.  You can do this in Python with a **for loop**. Here's what the syntax looks like:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "running_total = 0\n",
+    "\n",
+    "for i in range(6):    # why 6, not 5??\n",
+    "    running_total = running_total + 2*i + 1\n",
+    "\n",
+    "print(running_total)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "For loops in Python let us run the same code repeatedly for a range of values of some index variable.  The Python code\n",
+    "\n",
+    "```\n",
+    "for x in range(a, b):\n",
+    "    <code to be executed for x=a, a+1, ..., b-1>\n",
+    "```\n",
+    "will run the indented code following the line beginning `for x in range(a, b)` first with `x` equal to `a`, then `a+1`, and so on up to `b-1`.  This indented code is called the **body** of the for loop.\n",
+    "\n",
+    "Here is another example for loop. Before you run it, think what it will do."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "for i in range(50):\n",
+    "    if i ** 2 == 2025:\n",
+    "        print(i)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "Notice that on line 3 we need *two* levels of indentation - 8 spaces - because we are inside a conditional inside a for loop.  What would have happened if I forgot the second level of indentation on line 3, so that `print(i)` started in the same place as `if...`?   Change the cell above and find out.\n",
+    "\n",
+    "For loops don't have to use range commands - you can use a list to specify the values the index variable will take:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "for p in [2, 3, 5, 7]:\n",
+    "    print(p)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "## Unassessed exercises\n",
+    "\n",
+    "### Exercise 1\n",
+    "\n",
+    "The cell below contains a copy of the code we used to compute $\\sum_{i=0}^5 2i+1$.  \n",
+    "\n",
+    "Modify the code so that it computes the following:\n",
+    " - $\\sum_{i=3}^{3000} 2i+1$ (you should get the answer 9005992)\n",
+    " - $\\sum_{i=0}^{50} \\frac{1}{i!}$.  (To get the factorial function, add the line `import math` at the top of the code cell then use `math.factorial(i)`)\n",
+    " - $\\prod_{i=0}^{10} (2i+1)$.  (What should the initial value for `running_total` be now?)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "running_total = 0\n",
+    "\n",
+    "for i in range(6):\n",
+    "    running_total = running_total + 2 * i + 1\n",
+    "\n",
+    "print(running_total)"
+   ]
+  },
+  {
+   "attachments": {
+    "leftriemann2.svg": {
+     "image/svg": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiICBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iIAogImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cjxzdmcgd2lkdGg9IjYwMCIgaGVpZ2h0PSI0ODAiIHZpZXdCb3g9IjAgMCA2MDAgNDgwIgogeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgo8ZGVzYz5Qcm9kdWNlZCBieSBHTlVQTE9UIDQuMiBwYXRjaGxldmVsIDMgIDwvZGVzYz4KCjxkZWZzPgoKCgk8Y2lyY2xlIGlkPSdncERvdCcgcj0nMScvPgoJPHBhdGggaWQ9J2dwUHQwJyBzdHlsZT0nc3Ryb2tlLXdpZHRoOjAuMTQ4JyBkPSdNLTEsMCBoMiBNMCwtMSB2MicvPgoJPHBhdGggaWQ9J2dwUHQxJyBzdHlsZT0nc3Ryb2tlLXdpZHRoOjAuMTQ4JyBkPSdNLTEsLTEgTDEsMSBNMSwtMSBMLTEsMScvPgoJPHBhdGggaWQ9J2dwUHQyJyBzdHlsZT0nc3Ryb2tlLXdpZHRoOjAuMTQ4JyBkPSdNLTEsMCBMMSwwIE0wLC0xIEwwLDEgTS0xLC0xIEwxLDEgTS0xLDEgTDEsLTEnLz4KCTxyZWN0IGlkPSdncFB0Mycgc3R5bGU9J3N0cm9rZS13aWR0aDowLjE0OCcgeD0nLTEnIHk9Jy0xJyB3aWR0aD0nMicgaGVpZ2h0PScyJy8+Cgk8dXNlIHhsaW5rOmhyZWY9JyNncFB0MycgaWQ9J2dwUHQ0JyBzdHlsZT0nZmlsbDpjdXJyZW50Q29sb3I7IHN0cm9rZTpub25lJy8+Cgk8Y2lyY2xlIGlkPSdncFB0NScgc3R5bGU9J3N0cm9rZS13aWR0aDowLjE0OCcgY3g9JzAnIGN5PScwJyByPScxJy8+Cgk8dXNlIHhsaW5rOmhyZWY9JyNncFB0NScgaWQ9J2dwUHQ2JyBzdHlsZT0nZmlsbDpjdXJyZW50Q29sb3I7IHN0cm9rZTpub25lJy8+Cgk8cGF0aCBpZD0nZ3BQdDcnIHN0eWxlPSdzdHJva2Utd2lkdGg6MC4xNDgnIGQ9J00wLC0xLjMzIEwtMS4zMywwLjY3IEwxLjMzLDAuNjcgeicvPgoJPHVzZSB4bGluazpocmVmPScjZ3BQdDcnIGlkPSdncFB0OCcgc3R5bGU9J2ZpbGw6Y3VycmVudENvbG9yOyBzdHJva2U6bm9uZScvPgoJPHVzZSB4bGluazpocmVmPScjZ3BQdDcnIGlkPSdncFB0OScgdHJhbnNmb3JtPSdyb3RhdGUoMTgwKScvPgoJPHVzZSB4bGluazpocmVmPScjZ3BQdDknIGlkPSdncFB0MTAnIHN0eWxlPSdmaWxsOmN1cnJlbnRDb2xvcjsgc3Ryb2tlOm5vbmUnLz4KCTx1c2UgeGxpbms6aHJlZj0nI2dwUHQzJyBpZD0nZ3BQdDExJyB0cmFuc2Zvcm09J3JvdGF0ZSg0NSknLz4KCTx1c2UgeGxpbms6aHJlZj0nI2dwUHQxMScgaWQ9J2dwUHQxMicgc3R5bGU9J2ZpbGw6Y3VycmVudENvbG9yOyBzdHJva2U6bm9uZScvPgo8L2RlZnM+CjxnIHN0eWxlPSJmaWxsOm5vbmU7IGNvbG9yOndoaXRlOyBzdHJva2U6Y3VycmVudENvbG9yOyBzdHJva2Utd2lkdGg6MS4wMDsgc3Ryb2tlLWxpbmVjYXA6YnV0dDsgc3Ryb2tlLWxpbmVqb2luOm1pdGVyIj4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpub25lOyBjb2xvcjpibGFjazsgc3Ryb2tlOmN1cnJlbnRDb2xvcjsgc3Ryb2tlLXdpZHRoOjEuMDA7IHN0cm9rZS1saW5lY2FwOmJ1dHQ7IHN0cm9rZS1saW5lam9pbjptaXRlciI+Cgk8cGF0aCBkPSdNNjMuNSw0MjYuMCBMNTAuMCw0MjYuMCAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ0LjgsNDMyLjcpIiBzdHlsZT0ic3Ryb2tlOm5vbmU7IGZpbGw6YmxhY2s7IGZvbnQtZmFtaWx5OkJpdHN0cmVhbSBWZXJhIFNhbnM7IGZvbnQtc2l6ZToxOC4wMHB0OyB0ZXh0LWFuY2hvcjplbmQiPgoJCTx0ZXh0PiAwPC90ZXh0PgoJPC9nPgoJPHBhdGggZD0nTTYzLjUsMzc1LjkgTDUwLjAsMzc1LjkgJz48L3BhdGg+Cgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NC44LDM4Mi42KSIgc3R5bGU9InN0cm9rZTpub25lOyBmaWxsOmJsYWNrOyBmb250LWZhbWlseTpCaXRzdHJlYW0gVmVyYSBTYW5zOyBmb250LXNpemU6MTguMDBwdDsgdGV4dC1hbmNob3I6ZW5kIj4KCQk8dGV4dD4gMTwvdGV4dD4KCTwvZz4KCTxwYXRoIGQ9J002My41LDMyNS43IEw1MC4wLDMyNS43ICc+PC9wYXRoPgoJPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQuOCwzMzIuNCkiIHN0eWxlPSJzdHJva2U6bm9uZTsgZmlsbDpibGFjazsgZm9udC1mYW1pbHk6Qml0c3RyZWFtIFZlcmEgU2FuczsgZm9udC1zaXplOjE4LjAwcHQ7IHRleHQtYW5jaG9yOmVuZCI+CgkJPHRleHQ+IDI8L3RleHQ+Cgk8L2c+Cgk8cGF0aCBkPSdNNjMuNSwyNzUuNiBMNTAuMCwyNzUuNiAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ0LjgsMjgyLjMpIiBzdHlsZT0ic3Ryb2tlOm5vbmU7IGZpbGw6YmxhY2s7IGZvbnQtZmFtaWx5OkJpdHN0cmVhbSBWZXJhIFNhbnM7IGZvbnQtc2l6ZToxOC4wMHB0OyB0ZXh0LWFuY2hvcjplbmQiPgoJCTx0ZXh0PiAzPC90ZXh0PgoJPC9nPgoJPHBhdGggZD0nTTYzLjUsMjI1LjUgTDUwLjAsMjI1LjUgJz48L3BhdGg+Cgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NC44LDIzMi4yKSIgc3R5bGU9InN0cm9rZTpub25lOyBmaWxsOmJsYWNrOyBmb250LWZhbWlseTpCaXRzdHJlYW0gVmVyYSBTYW5zOyBmb250LXNpemU6MTguMDBwdDsgdGV4dC1hbmNob3I6ZW5kIj4KCQk8dGV4dD4gNDwvdGV4dD4KCTwvZz4KCTxwYXRoIGQ9J002My41LDE3NS40IEw1MC4wLDE3NS40ICc+PC9wYXRoPgoJPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQuOCwxODIuMSkiIHN0eWxlPSJzdHJva2U6bm9uZTsgZmlsbDpibGFjazsgZm9udC1mYW1pbHk6Qml0c3RyZWFtIFZlcmEgU2FuczsgZm9udC1zaXplOjE4LjAwcHQ7IHRleHQtYW5jaG9yOmVuZCI+CgkJPHRleHQ+IDU8L3RleHQ+Cgk8L2c+Cgk8cGF0aCBkPSdNNjMuNSwxMjUuMiBMNTAuMCwxMjUuMiAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ0LjgsMTMxLjkpIiBzdHlsZT0ic3Ryb2tlOm5vbmU7IGZpbGw6YmxhY2s7IGZvbnQtZmFtaWx5OkJpdHN0cmVhbSBWZXJhIFNhbnM7IGZvbnQtc2l6ZToxOC4wMHB0OyB0ZXh0LWFuY2hvcjplbmQiPgoJCTx0ZXh0PiA2PC90ZXh0PgoJPC9nPgoJPHBhdGggZD0nTTYzLjUsNzUuMSBMNTAuMCw3NS4xICc+PC9wYXRoPgoJPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQuOCw4MS44KSIgc3R5bGU9InN0cm9rZTpub25lOyBmaWxsOmJsYWNrOyBmb250LWZhbWlseTpCaXRzdHJlYW0gVmVyYSBTYW5zOyBmb250LXNpemU6MTguMDBwdDsgdGV4dC1hbmNob3I6ZW5kIj4KCQk8dGV4dD4gNzwvdGV4dD4KCTwvZz4KCTxwYXRoIGQ9J002My41LDI1LjAgTDUwLjAsMjUuMCAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ0LjgsMzEuNykiIHN0eWxlPSJzdHJva2U6bm9uZTsgZmlsbDpibGFjazsgZm9udC1mYW1pbHk6Qml0c3RyZWFtIFZlcmEgU2FuczsgZm9udC1zaXplOjE4LjAwcHQ7IHRleHQtYW5jaG9yOmVuZCI+CgkJPHRleHQ+IDg8L3RleHQ+Cgk8L2c+Cgk8cGF0aCBkPSdNNjMuNSw0MjYuMCBMNjMuNSw0MzkuNSAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYzLjUsNDU5LjcpIiBzdHlsZT0ic3Ryb2tlOm5vbmU7IGZpbGw6YmxhY2s7IGZvbnQtZmFtaWx5OkJpdHN0cmVhbSBWZXJhIFNhbnM7IGZvbnQtc2l6ZToxOC4wMHB0OyB0ZXh0LWFuY2hvcjptaWRkbGUiPgoJCTx0ZXh0PiAwPC90ZXh0PgoJPC9nPgoJPHBhdGggZD0nTTE4OC4wLDQyNi4wIEwxODguMCw0MzkuNSAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4OC4wLDQ1OS43KSIgc3R5bGU9InN0cm9rZTpub25lOyBmaWxsOmJsYWNrOyBmb250LWZhbWlseTpCaXRzdHJlYW0gVmVyYSBTYW5zOyBmb250LXNpemU6MTguMDBwdDsgdGV4dC1hbmNob3I6bWlkZGxlIj4KCQk8dGV4dD4gMC41PC90ZXh0PgoJPC9nPgoJPHBhdGggZD0nTTMxMi41LDQyNi4wIEwzMTIuNSw0MzkuNSAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMxMi41LDQ1OS43KSIgc3R5bGU9InN0cm9rZTpub25lOyBmaWxsOmJsYWNrOyBmb250LWZhbWlseTpCaXRzdHJlYW0gVmVyYSBTYW5zOyBmb250LXNpemU6MTguMDBwdDsgdGV4dC1hbmNob3I6bWlkZGxlIj4KCQk8dGV4dD4gMTwvdGV4dD4KCTwvZz4KCTxwYXRoIGQ9J000MzcuMCw0MjYuMCBMNDM3LjAsNDM5LjUgJz48L3BhdGg+Cgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MzcuMCw0NTkuNykiIHN0eWxlPSJzdHJva2U6bm9uZTsgZmlsbDpibGFjazsgZm9udC1mYW1pbHk6Qml0c3RyZWFtIFZlcmEgU2FuczsgZm9udC1zaXplOjE4LjAwcHQ7IHRleHQtYW5jaG9yOm1pZGRsZSI+CgkJPHRleHQ+IDEuNTwvdGV4dD4KCTwvZz4KCTxwYXRoIGQ9J001NjEuNSw0MjYuMCBMNTYxLjUsNDM5LjUgJz48L3BhdGg+Cgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1NjEuNSw0NTkuNykiIHN0eWxlPSJzdHJva2U6bm9uZTsgZmlsbDpibGFjazsgZm9udC1mYW1pbHk6Qml0c3RyZWFtIFZlcmEgU2FuczsgZm9udC1zaXplOjE4LjAwcHQ7IHRleHQtYW5jaG9yOm1pZGRsZSI+CgkJPHRleHQ+IDI8L3RleHQ+Cgk8L2c+Cgk8cGF0aCBkPSdNNjMuNSw0MjYuMCBMNTYxLjUsNDI2LjAgTTYzLjUsNDI2LjAgTDYzLjUsMjUuMCAnPjwvcGF0aD4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpub25lOyBjb2xvcjpibGFjazsgc3Ryb2tlOmN1cnJlbnRDb2xvcjsgc3Ryb2tlLXdpZHRoOjMuMDA7IHN0cm9rZS1saW5lY2FwOmJ1dHQ7IHN0cm9rZS1saW5lam9pbjptaXRlciI+CjwvZz4KPGcgc3R5bGU9ImZpbGw6bm9uZTsgY29sb3I6cmVkOyBzdHJva2U6Y3VycmVudENvbG9yOyBzdHJva2Utd2lkdGg6My4wMDsgc3Ryb2tlLWxpbmVjYXA6YnV0dDsgc3Ryb2tlLWxpbmVqb2luOm1pdGVyIj4KCTxwYXRoIHN0eWxlPSdzdHJva2U6cmdiKCAgMCwgICAwLCAyNTUpJyBkPSdNNjMuNSw0MjYuMCBMMTg4LjAsNDI2LjAgTDYzLjUsNDI2LjAgWiAnPjwvcGF0aD4KCTxwYXRoIHN0eWxlPSdzdHJva2U6cmdiKCAgMCwgICAwLCAyNTUpJyBkPSdNMTg4LjAsNDI2LjAgTDE4OC4wLDQxOS43IEwzMTIuNSw0MTkuNyBMMzEyLjUsNDI2LjAgTDE4OC4wLDQyNi4wIFogJz48L3BhdGg+Cgk8cGF0aCBzdHlsZT0nc3Ryb2tlOnJnYiggIDAsICAgMCwgMjU1KScgZD0nTTMxMi41LDQyNi4wIEwzMTIuNSwzNzUuOSBMNDM3LjAsMzc1LjkgTDQzNy4wLDQyNi4wIEwzMTIuNSw0MjYuMCBaICc+PC9wYXRoPgoJPHBhdGggc3R5bGU9J3N0cm9rZTpyZ2IoICAwLCAgIDAsIDI1NSknIGQ9J000MzcuMCw0MjYuMCBMNDM3LjAsMjU2LjggTDU2MS41LDI1Ni44IEw1NjEuNSw0MjYuMCBMNDM3LjAsNDI2LjAgWiAnPjwvcGF0aD4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpub25lOyBjb2xvcjpyZWQ7IHN0cm9rZTpyZ2IoICAwLCAgIDAsIDI1NSk7IHN0cm9rZS13aWR0aDoxLjAwOyBzdHJva2UtbGluZWNhcDpidXR0OyBzdHJva2UtbGluZWpvaW46bWl0ZXIiPgo8L2c+CjxnIHN0eWxlPSJmaWxsOm5vbmU7IGNvbG9yOmJsYWNrOyBzdHJva2U6Y3VycmVudENvbG9yOyBzdHJva2Utd2lkdGg6MS4wMDsgc3Ryb2tlLWxpbmVjYXA6YnV0dDsgc3Ryb2tlLWxpbmVqb2luOm1pdGVyIj4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpub25lOyBjb2xvcjpibGFjazsgc3Ryb2tlOmN1cnJlbnRDb2xvcjsgc3Ryb2tlLXdpZHRoOjEuMDA7IHN0cm9rZS1saW5lY2FwOmJ1dHQ7IHN0cm9rZS1saW5lam9pbjptaXRlciI+Cgk8cGF0aCBkPSdNNjMuNSw0MjYuMCBMNTAuMCw0MjYuMCAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ0LjgsNDMyLjcpIiBzdHlsZT0ic3Ryb2tlOm5vbmU7IGZpbGw6YmxhY2s7IGZvbnQtZmFtaWx5OkJpdHN0cmVhbSBWZXJhIFNhbnM7IGZvbnQtc2l6ZToxOC4wMHB0OyB0ZXh0LWFuY2hvcjplbmQiPgoJCTx0ZXh0PiAwPC90ZXh0PgoJPC9nPgoJPHBhdGggZD0nTTYzLjUsMzc1LjkgTDUwLjAsMzc1LjkgJz48L3BhdGg+Cgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NC44LDM4Mi42KSIgc3R5bGU9InN0cm9rZTpub25lOyBmaWxsOmJsYWNrOyBmb250LWZhbWlseTpCaXRzdHJlYW0gVmVyYSBTYW5zOyBmb250LXNpemU6MTguMDBwdDsgdGV4dC1hbmNob3I6ZW5kIj4KCQk8dGV4dD4gMTwvdGV4dD4KCTwvZz4KCTxwYXRoIGQ9J002My41LDMyNS43IEw1MC4wLDMyNS43ICc+PC9wYXRoPgoJPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQuOCwzMzIuNCkiIHN0eWxlPSJzdHJva2U6bm9uZTsgZmlsbDpibGFjazsgZm9udC1mYW1pbHk6Qml0c3RyZWFtIFZlcmEgU2FuczsgZm9udC1zaXplOjE4LjAwcHQ7IHRleHQtYW5jaG9yOmVuZCI+CgkJPHRleHQ+IDI8L3RleHQ+Cgk8L2c+Cgk8cGF0aCBkPSdNNjMuNSwyNzUuNiBMNTAuMCwyNzUuNiAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ0LjgsMjgyLjMpIiBzdHlsZT0ic3Ryb2tlOm5vbmU7IGZpbGw6YmxhY2s7IGZvbnQtZmFtaWx5OkJpdHN0cmVhbSBWZXJhIFNhbnM7IGZvbnQtc2l6ZToxOC4wMHB0OyB0ZXh0LWFuY2hvcjplbmQiPgoJCTx0ZXh0PiAzPC90ZXh0PgoJPC9nPgoJPHBhdGggZD0nTTYzLjUsMjI1LjUgTDUwLjAsMjI1LjUgJz48L3BhdGg+Cgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NC44LDIzMi4yKSIgc3R5bGU9InN0cm9rZTpub25lOyBmaWxsOmJsYWNrOyBmb250LWZhbWlseTpCaXRzdHJlYW0gVmVyYSBTYW5zOyBmb250LXNpemU6MTguMDBwdDsgdGV4dC1hbmNob3I6ZW5kIj4KCQk8dGV4dD4gNDwvdGV4dD4KCTwvZz4KCTxwYXRoIGQ9J002My41LDE3NS40IEw1MC4wLDE3NS40ICc+PC9wYXRoPgoJPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQuOCwxODIuMSkiIHN0eWxlPSJzdHJva2U6bm9uZTsgZmlsbDpibGFjazsgZm9udC1mYW1pbHk6Qml0c3RyZWFtIFZlcmEgU2FuczsgZm9udC1zaXplOjE4LjAwcHQ7IHRleHQtYW5jaG9yOmVuZCI+CgkJPHRleHQ+IDU8L3RleHQ+Cgk8L2c+Cgk8cGF0aCBkPSdNNjMuNSwxMjUuMiBMNTAuMCwxMjUuMiAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ0LjgsMTMxLjkpIiBzdHlsZT0ic3Ryb2tlOm5vbmU7IGZpbGw6YmxhY2s7IGZvbnQtZmFtaWx5OkJpdHN0cmVhbSBWZXJhIFNhbnM7IGZvbnQtc2l6ZToxOC4wMHB0OyB0ZXh0LWFuY2hvcjplbmQiPgoJCTx0ZXh0PiA2PC90ZXh0PgoJPC9nPgoJPHBhdGggZD0nTTYzLjUsNzUuMSBMNTAuMCw3NS4xICc+PC9wYXRoPgoJPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQuOCw4MS44KSIgc3R5bGU9InN0cm9rZTpub25lOyBmaWxsOmJsYWNrOyBmb250LWZhbWlseTpCaXRzdHJlYW0gVmVyYSBTYW5zOyBmb250LXNpemU6MTguMDBwdDsgdGV4dC1hbmNob3I6ZW5kIj4KCQk8dGV4dD4gNzwvdGV4dD4KCTwvZz4KCTxwYXRoIGQ9J002My41LDI1LjAgTDUwLjAsMjUuMCAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ0LjgsMzEuNykiIHN0eWxlPSJzdHJva2U6bm9uZTsgZmlsbDpibGFjazsgZm9udC1mYW1pbHk6Qml0c3RyZWFtIFZlcmEgU2FuczsgZm9udC1zaXplOjE4LjAwcHQ7IHRleHQtYW5jaG9yOmVuZCI+CgkJPHRleHQ+IDg8L3RleHQ+Cgk8L2c+Cgk8cGF0aCBkPSdNNjMuNSw0MjYuMCBMNjMuNSw0MzkuNSAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYzLjUsNDU5LjcpIiBzdHlsZT0ic3Ryb2tlOm5vbmU7IGZpbGw6YmxhY2s7IGZvbnQtZmFtaWx5OkJpdHN0cmVhbSBWZXJhIFNhbnM7IGZvbnQtc2l6ZToxOC4wMHB0OyB0ZXh0LWFuY2hvcjptaWRkbGUiPgoJCTx0ZXh0PiAwPC90ZXh0PgoJPC9nPgoJPHBhdGggZD0nTTE4OC4wLDQyNi4wIEwxODguMCw0MzkuNSAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4OC4wLDQ1OS43KSIgc3R5bGU9InN0cm9rZTpub25lOyBmaWxsOmJsYWNrOyBmb250LWZhbWlseTpCaXRzdHJlYW0gVmVyYSBTYW5zOyBmb250LXNpemU6MTguMDBwdDsgdGV4dC1hbmNob3I6bWlkZGxlIj4KCQk8dGV4dD4gMC41PC90ZXh0PgoJPC9nPgoJPHBhdGggZD0nTTMxMi41LDQyNi4wIEwzMTIuNSw0MzkuNSAnPjwvcGF0aD4KCTxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMxMi41LDQ1OS43KSIgc3R5bGU9InN0cm9rZTpub25lOyBmaWxsOmJsYWNrOyBmb250LWZhbWlseTpCaXRzdHJlYW0gVmVyYSBTYW5zOyBmb250LXNpemU6MTguMDBwdDsgdGV4dC1hbmNob3I6bWlkZGxlIj4KCQk8dGV4dD4gMTwvdGV4dD4KCTwvZz4KCTxwYXRoIGQ9J000MzcuMCw0MjYuMCBMNDM3LjAsNDM5LjUgJz48L3BhdGg+Cgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MzcuMCw0NTkuNykiIHN0eWxlPSJzdHJva2U6bm9uZTsgZmlsbDpibGFjazsgZm9udC1mYW1pbHk6Qml0c3RyZWFtIFZlcmEgU2FuczsgZm9udC1zaXplOjE4LjAwcHQ7IHRleHQtYW5jaG9yOm1pZGRsZSI+CgkJPHRleHQ+IDEuNTwvdGV4dD4KCTwvZz4KCTxwYXRoIGQ9J001NjEuNSw0MjYuMCBMNTYxLjUsNDM5LjUgJz48L3BhdGg+Cgk8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1NjEuNSw0NTkuNykiIHN0eWxlPSJzdHJva2U6bm9uZTsgZmlsbDpibGFjazsgZm9udC1mYW1pbHk6Qml0c3RyZWFtIFZlcmEgU2FuczsgZm9udC1zaXplOjE4LjAwcHQ7IHRleHQtYW5jaG9yOm1pZGRsZSI+CgkJPHRleHQ+IDI8L3RleHQ+Cgk8L2c+Cgk8cGF0aCBkPSdNNjMuNSw0MjYuMCBMNTYxLjUsNDI2LjAgTTYzLjUsNDI2LjAgTDYzLjUsMjUuMCAnPjwvcGF0aD4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpub25lOyBjb2xvcjpibGFjazsgc3Ryb2tlOmN1cnJlbnRDb2xvcjsgc3Ryb2tlLXdpZHRoOjMuMDA7IHN0cm9rZS1saW5lY2FwOmJ1dHQ7IHN0cm9rZS1saW5lam9pbjptaXRlciI+CjwvZz4KPGcgc3R5bGU9ImZpbGw6bm9uZTsgY29sb3I6cmVkOyBzdHJva2U6Y3VycmVudENvbG9yOyBzdHJva2Utd2lkdGg6My4wMDsgc3Ryb2tlLWxpbmVjYXA6YnV0dDsgc3Ryb2tlLWxpbmVqb2luOm1pdGVyIj4KCTxwYXRoIHN0eWxlPSdzdHJva2U6cmdiKDI1NSwgICAwLCAgIDApJyBkPSdNNjMuNSw0MjYuMCBMNjguNSw0MjYuMCBMNzMuNiw0MjYuMCBMNzguNiw0MjYuMCBMODMuNiw0MjYuMCBMODguNyw0MjUuOSBMOTMuNyw0MjUuOSBMOTguNyw0MjUuOSAKCQlMMTAzLjcsNDI1LjggTDEwOC44LDQyNS43IEwxMTMuOCw0MjUuNiBMMTE4LjgsNDI1LjQgTDEyMy45LDQyNS4zIEwxMjguOSw0MjUuMSBMMTMzLjksNDI0LjkgTDEzOS4wLDQyNC42IAoJCUwxNDQuMCw0MjQuMyBMMTQ5LjAsNDI0LjAgTDE1NC4wLDQyMy42IEwxNTkuMSw0MjMuMiBMMTY0LjEsNDIyLjcgTDE2OS4xLDQyMi4yIEwxNzQuMiw0MjEuNiBMMTc5LjIsNDIxLjAgCgkJTDE4NC4yLDQyMC4zIEwxODkuMyw0MTkuNSBMMTk0LjMsNDE4LjcgTDE5OS4zLDQxNy45IEwyMDQuMyw0MTYuOSBMMjA5LjQsNDE1LjkgTDIxNC40LDQxNC44IEwyMTkuNCw0MTMuNyAKCQlMMjI0LjUsNDEyLjUgTDIyOS41LDQxMS4xIEwyMzQuNSw0MDkuOCBMMjM5LjYsNDA4LjMgTDI0NC42LDQwNi43IEwyNDkuNiw0MDUuMSBMMjU0LjcsNDAzLjMgTDI1OS43LDQwMS41IAoJCUwyNjQuNywzOTkuNiBMMjY5LjcsMzk3LjUgTDI3NC44LDM5NS40IEwyNzkuOCwzOTMuMSBMMjg0LjgsMzkwLjggTDI4OS45LDM4OC4zIEwyOTQuOSwzODUuOCBMMjk5LjksMzgzLjEgCgkJTDMwNS4wLDM4MC4zIEwzMTAuMCwzNzcuNCBMMzE1LjAsMzc0LjMgTDMyMC4wLDM3MS4yIEwzMjUuMSwzNjcuOSBMMzMwLjEsMzY0LjUgTDMzNS4xLDM2MC45IEwzNDAuMiwzNTcuMiAKCQlMMzQ1LjIsMzUzLjQgTDM1MC4yLDM0OS41IEwzNTUuMywzNDUuNCBMMzYwLjMsMzQxLjEgTDM2NS4zLDMzNi43IEwzNzAuMywzMzIuMiBMMzc1LjQsMzI3LjUgTDM4MC40LDMyMi43IAoJCUwzODUuNCwzMTcuNyBMMzkwLjUsMzEyLjUgTDM5NS41LDMwNy4yIEw0MDAuNSwzMDEuNyBMNDA1LjYsMjk2LjEgTDQxMC42LDI5MC4yIEw0MTUuNiwyODQuMiBMNDIwLjcsMjc4LjEgCgkJTDQyNS43LDI3MS43IEw0MzAuNywyNjUuMiBMNDM1LjcsMjU4LjUgTDQ0MC44LDI1MS42IEw0NDUuOCwyNDQuNiBMNDUwLjgsMjM3LjMgTDQ1NS45LDIyOS45IEw0NjAuOSwyMjIuMiAKCQlMNDY1LjksMjE0LjQgTDQ3MS4wLDIwNi40IEw0NzYuMCwxOTguMSBMNDgxLjAsMTg5LjcgTDQ4Ni4wLDE4MS4xIEw0OTEuMSwxNzIuMiBMNDk2LjEsMTYzLjEgTDUwMS4xLDE1My45IAoJCUw1MDYuMiwxNDQuNCBMNTExLjIsMTM0LjcgTDUxNi4yLDEyNC43IEw1MjEuMywxMTQuNiBMNTI2LjMsMTA0LjIgTDUzMS4zLDkzLjYgTDUzNi4zLDgyLjcgTDU0MS40LDcxLjcgCgkJTDU0Ni40LDYwLjQgTDU1MS40LDQ4LjggTDU1Ni41LDM3LjAgTDU2MS41LDI1LjAgJz48L3BhdGg+CjwvZz4KPGcgc3R5bGU9ImZpbGw6bm9uZTsgY29sb3I6cmVkOyBzdHJva2U6cmdiKDI1NSwgICAwLCAgIDApOyBzdHJva2Utd2lkdGg6MS4wMDsgc3Ryb2tlLWxpbmVjYXA6YnV0dDsgc3Ryb2tlLWxpbmVqb2luOm1pdGVyIj4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpub25lOyBjb2xvcjpibGFjazsgc3Ryb2tlOmN1cnJlbnRDb2xvcjsgc3Ryb2tlLXdpZHRoOjEuMDA7IHN0cm9rZS1saW5lY2FwOmJ1dHQ7IHN0cm9rZS1saW5lam9pbjptaXRlciI+CjwvZz4KPC9zdmc+Cgo="
+    }
+   },
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "### Exercise 2\n",
+    "\n",
+    "To approximate the integral from $a$ to $b$ of a function $f$ we can pick a large number $N$ and numbers \n",
+    "\n",
+    "$$a=x_0 < x_1 < \\cdots < x_N = b$$\n",
+    "\n",
+    "then add up the areas of the rectangles with base $[x_i, x_{i+1}]$ and height $f(x_i)$.  Here's a picture showing these rectangles for $f(x)=x^2, a=0, b=2, N=4, x_1=0.5, x_2 = 1, x_3 = 1.5$:\n",
+    "\n",
+    "![leftriemann2.svg](attachment:leftriemann2.svg)\n",
+    "\n",
+    "(if you can't see the image, click [this link](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/LeftRiemann2.svg/600px-LeftRiemann2.svg.png))\n",
+    "\n",
+    "This method of approximating an integral is called the rectangle rule.\n",
+    "\n",
+    "The simplest way to choose the $x_i$s is to take $x_i = a + i\\frac{(b-a)}{N}$, so that each rectangle has width $\\frac{(b-a)}{N}$.  This gives the following approximation:\n",
+    "\n",
+    "$$ \\int_a ^b f(x)\\, \\mathrm{d}x \\approx \\frac{b-a}{N} \\sum_{i=0}^{N-1} f\\left(a + \\frac{(b-a)i}{N}\\right) $$\n",
+    "\n",
+    "**Complete the definition of the function `rectangle_rule(f, a, b, N)` below.**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "def rectangle_rule(a, b, N):\n",
+    "    total = 0\n",
+    "    for i in range(N):\n",
+    "        total = # your code goes here\n",
+    "    return ((b-a) / N) * total"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "Test your answer by running the following cell to define the function $g(x) = x^2$:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "def g(x):\n",
+    "    return x ** 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "and then running `rectangle_rule(g, 0, 1, 100)`. What should the output be, approximately?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "rectangle_rule(g, 0, 1, 100)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "### Exercise 3\n",
+    "\n",
+    "The simplest way to check whether a number `n` is prime is to go through all the numbers $2, 3, \\ldots, n-1$ and see if any of them divide `n`. If not, `n` is prime.\n",
+    "\n",
+    "In fact, you only need to check the numbers between 2 and $\\sqrt{n}$.  In the code below we'll use `round(n ** 0.5)` to round $\\sqrt{n}$ to the nearest integer.\n",
+    "\n",
+    "This kind of procedure is exactly what for loops are useful for.  Here is a first attempt at writing a function that uses a for loop to check if a number is prime."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "def is_prime(n):\n",
+    "    if n == 1:  # this conditional was added for the first part of the question\n",
+    "        return False\n",
+    "    for i in range(2, round(n ** 0.5) + 1): # the + 1 was added\n",
+    "        if n % i == 0:\n",
+    "            return False\n",
+    "    return True"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "Unfortunately there are some problems.  In the next cell, try `is_prime(1)` - you'll get the wrong answer: 1 is not a prime number, but `is_prime(1)` will output `True`. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {
+     },
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "is_prime(1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    " **Change the code above so that it gives the correct output when `n` is `1`.**\n",
+    "\n",
+    "You could do this with a conditional before the `for` loop, for example.\n",
+    "\n",
+    "Even once you've done this there are still problems.  In the next cell, try `is_prime(4)` and `is_prime(25)`:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {
+     },
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "is_prime(25)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "You still get the wrong answer.  **Fix the code so that it gives the right answer for `4` and `25`.**  \n",
+    "\n",
+    "HINT: what would `range(2, round(n ** 0.5))` be if `n` was 4 or 25?  You will need to change this `range` to make the function work properly."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "# range(2, round(4 ** 0.5)) would be range(2, 2) which is empty because range(a, b) only goes up to b-1\n",
+    "# hence with the code as it was, is_prime(4) is true because the for loop never checks if 2 divides 4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "### Exercise 4\n",
+    "\n",
+    "It's perfectly find to have one for loop inside another - these are called *nested* for loops.  What will the following nested for loops print?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0 0\n",
+      "0 1\n",
+      "0 2\n",
+      "0 3\n",
+      "1 1\n",
+      "1 2\n",
+      "1 3\n",
+      "2 2\n",
+      "2 3\n",
+      "3 3\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(4):\n",
+    "    for j in range(4):\n",
+    "        if j >= i:\n",
+    "            print(i, j)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "### Exercise 5\n",
+    "\n",
+    "A *perfect cube* is a number of the form $n^3$ for a whole number $n$, so 0, 1, 8, and 27 are perfect cubes but 2, 4, and 6 are not.  **Use a for loop to find all the perfect cubes between 0 and 1000.**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "for i in range()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (system-wide)",
+   "language": "python",
+   "metadata": {
+    "cocalc": {
+     "description": "Python 3 programming language",
+     "priority": 100,
+     "url": "https://www.python.org/"
+    }
+   },
+   "name": "python3",
+   "resource_dir": "/ext/jupyter/kernels/python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

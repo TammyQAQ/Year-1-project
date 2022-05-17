@@ -1,0 +1,19 @@
+{"backend_state":"init","kernel":"python3","kernel_state":"idle","kernel_usage":{"cpu":0,"memory":0},"trust":false,"type":"settings"}
+{"cell_type":"code","exec_count":0,"id":"1ce960","input":"A = True\nB = False\nC = True\nD = False\nA or (B and C)","pos":13,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"28788f","input":"x < y # is x less than y?","pos":2,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"39602d","input":"x <= z # is x less than or equal to z?","pos":4,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"3fd375","input":"x < -1/2 # is x less than -1/2?","pos":3,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"71e13a","input":"x != y # is x not equal to y?","pos":5,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"7bafe4","input":"x == z","pos":7,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"8a2369","input":"(A and B) or (C and (not D))","pos":14,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"8e1865","input":"x = 1\ny = 2\nz = 1","pos":1,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"b8c7ed","input":"x == y","pos":9,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"cb75e0","input":"not ((not A) or (not B))","pos":15,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"eb71dd","input":"a = True\nb = False\na and b","pos":11,"type":"cell"}
+{"cell_type":"code","exec_count":0,"id":"f5addc","input":"y = z","pos":8,"type":"cell"}
+{"cell_type":"markdown","id":"1ac467","input":"# [Booleans](https://docs.python.org/3/library/stdtypes.html#boolean-values)\n\nA boolean variable (`bool` for short) is one whose value is either `True` or `False`.  We briefly saw boolean values before, when we checked if two things were equal using `0 == 1`.\n\nLots of built-in Python operations return a boolean result.  The most frequently used are the comparison operators \n- `<` (less than)\n- `>` (greater than)\n- `<=` (less than or equal to)\n- `>=` (greater than or equal to)\n- `==` (equal to)\n- `!=` (not equal to).","pos":0,"type":"cell"}
+{"cell_type":"markdown","id":"a75a98","input":"The usual logical operations: `not`, `and`, `or`, [`xor`](https://en.wikipedia.org/wiki/Exclusive_or) (exclusive or) exist in Python. For example,","pos":10,"type":"cell"}
+{"cell_type":"markdown","id":"a9f2d2","input":"...gives `False`, because `a and b` is `True and False` which is `False`.\n\n**What will be the output of the next three cells?**","pos":12,"type":"cell"}
+{"cell_type":"markdown","id":"b6210c","input":"**Warning**: don't get `==` mixed up with `=`\n\n```\nx = y\n```\n\nis an *assignment*: it means \"create (or redefine) a variable `x` and give it the value of the variable `y`.\"\n\n```\nx == y\n```\n\nis a *test of equality*: it returns `True` if the variable `x` equals the variable `y` and `False` otherwise.\n\n**What will be the result of the following three cells if they are run in order?**  Think about the meaning of `=` and `==`, and run the cells to see if you were right.  The variables `x, y, z` were defined above as `x = 1`, `y = 2`, and `z=1`.","pos":6,"type":"cell"}
+{"id":0,"time":1611420709769,"type":"user"}
+{"last_load":1611420712084,"type":"file"}

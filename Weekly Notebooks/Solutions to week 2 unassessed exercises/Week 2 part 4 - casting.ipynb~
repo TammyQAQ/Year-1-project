@@ -1,0 +1,390 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "# Type conversion (casting)\n",
+    "\n",
+    "Casting, or type conversion, is when we change one type into another.  For example, the int `2` and the string `\"2\"` are different objects in Python..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "number2 = 2\n",
+    "string2 = \"2\"\n",
+    "number2 == string2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "...but you can convert strings *of digits* into ints with the `int` function:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "int(\"2\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "int(\"2\") == 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "You can convert strings of digits that may contain a decimal point into decimal numbers (`float`s in Python) with the `float` function:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "float(\"2.345\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "You can convert floats to ints with `int()`.  It behaves like the floor function $\\lfloor \\cdot \\rfloor$, that is, it *always* rounds down to the biggest integer which is smaller than or equal to its input."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "int(3.141)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "int(3.99999)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "`int` and `float` are expecially useful when you are using `input`.  Remember that the `input()` function allows you to get input from the user, but it always returns a *string* - even if the user types 888, `input` will return the string \"888\" not the number 888.\n",
+    "\n",
+    "If you want to treat user input as a number you'll have to convert it using `int()` or `float()`.  **The next cell will cause an error**, because `n` will be a string - no matter what you type! - and Python doesn't know how to add a number and a string."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "n = input(\"Enter your age: \")\n",
+    "print(\"Next year you'll be \", n + 1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "The next cell is the same as the last, except line 2 uses `int` to change the user's input into an integer.\n",
+    "\n",
+    "Of course, it will only work if they type a number `\"88\"` - `int` isn't clever enough to turn \"eighty-eight\" into 88."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "cocalc": {
+     "outputs": {
+      "0": {
+       "name": "input",
+       "opts": {
+        "password": false,
+        "prompt": "Enter your age: "
+       },
+       "output_type": "stream",
+       "value": "44"
+      }
+     }
+    },
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "n = input(\"Enter your age: \")\n",
+    "n = int(n)\n",
+    "print(\"Next year you'll be\", n + 1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "You can convert numbers to strings with `str`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "str(3.141)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "str(2001)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "str(2) == \"2\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "This can be useful when you want to `print` a statement that depends on a number:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 0,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+   ],
+   "source": [
+    "n = 44\n",
+    "output = \"n is equal to \" + str(n)\n",
+    "print(output)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "If we'd just tried `output = \"n is equal to \" + 44` it would be an error - you can't add a string to a number."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "## Unassessed exercises\n",
+    "\n",
+    "### Exercise 1\n",
+    "\n",
+    "In this exercise you will revise what you learned about conditionals last week and practise using the `input` function.\n",
+    "\n",
+    "The following code asks the user to type a number then uses a conditional depending on that number.  Recall that `n % m` is the remainder when you divide `n` by `m`, so `n % m == 0` is true if and only if `m` divides `n`. \n",
+    "\n",
+    "**Run the cell below, and type in `22`.** You will get an error.  **Fix the error by changing the first line**. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "cocalc": {
+     "outputs": {
+      "0": {
+       "name": "input",
+       "opts": {
+        "password": false,
+        "prompt": "Enter a whole number: "
+       },
+       "output_type": "stream",
+       "value": "6"
+      }
+     }
+    },
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": "Enter a whole number:  6"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "bang\n"
+     ]
+    }
+   ],
+   "source": [
+    "n = int(input(\"Enter a whole number: \"))\n",
+    "\n",
+    "if n % 2 == 0:\n",
+    "    print(\"bang\")\n",
+    "elif n % 6 == 0:\n",
+    "    print(\"crash\")\n",
+    "elif n % 3 == 0:\n",
+    "    print(\"smash\")\n",
+    "else:\n",
+    "    print(\"...\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": false
+   },
+   "source": [
+    "Next, **decide on the answer to the following questions, then run the code cell above to find out if you were right**.  If you get any wrong, re-read the .\n",
+    "\n",
+    "**What will be printed if you enter 2?**\n",
+    "<form action=\"\">\n",
+    "  <input type=\"radio\" name=\"2\" value=\"bang\" checked=\"checked\"> bang<br>\n",
+    "  <input type=\"radio\" name=\"2\" value=\"bangcrash\"> bang crash<br>\n",
+    "  <input type=\"radio\" name=\"2\" value=\"bangcrashsmashdotdotdot\"> bang crash smash ...\n",
+    "</form>\n",
+    "\n",
+    "**What will be printed if you enter 3?**\n",
+    "<form action=\"\">\n",
+    "  <input type=\"radio\" name=\"3\" value=\"crash\"> crash<br>\n",
+    "  <input type=\"radio\" name=\"3\" value=\"crashsmash\" checked=\"checked\"> smash<br>\n",
+    "  <input type=\"radio\" name=\"3\" value=\"crashsmash\"> crash smash <br>\n",
+    "    <input type=\"radio\" name=\"3\" value=\"crashsmashdotdotdot\"> crash smash ...\n",
+    "</form>\n",
+    "\n",
+    "\n",
+    "**What will be printed if you enter 6?**\n",
+    "<form action=\"\">\n",
+    "  <input type=\"radio\" name=\"6\" value=\"bang\" checked=\"checked\"> bang<br>\n",
+    "  <input type=\"radio\" name=\"6\" value=\"bangcrash\"> bang crash<br>\n",
+    "  <input type=\"radio\" name=\"6\" value=\"bangcrash\"> crash<br>\n",
+    "  <input type=\"radio\" name=\"6\" value=\"crashsmashdotdotdot\"> bang crash ...\n",
+    "</form>\n",
+    "\n",
+    "**What will be printed if you enter 7?**\n",
+    "<form action=\"\">\n",
+    "  <input type=\"radio\" name=\"7\" value=\"dotdotdot\" checked=\"checked\"> ...<br>\n",
+    "  <input type=\"radio\" name=\"7\" value=\"bangcrash\"> nothing\n",
+    "</form>\n",
+    "\n",
+    "**Click to select your answers, then check them by running the code cell above**.\n",
+    "\n",
+    "***"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (system-wide)",
+   "language": "python",
+   "metadata": {
+    "cocalc": {
+     "description": "Python 3 programming language",
+     "priority": 100,
+     "url": "https://www.python.org/"
+    }
+   },
+   "name": "python3",
+   "resource_dir": "/ext/jupyter/kernels/python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
